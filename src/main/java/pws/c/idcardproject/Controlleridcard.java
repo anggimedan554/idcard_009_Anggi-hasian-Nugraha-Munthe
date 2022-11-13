@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,9 +22,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class Controlleridcard {
     
     @RequestMapping("/Projectidcard")
+    
     public String Projectidcard (@RequestParam ("Name") String text,
                                  @RequestParam ("Tanggal")@DateTimeFormat(pattern = "EEE-yyy-MM-dd")Date date,
-                                 @RequestParam ("image") MultipartFile file )
+                                 @RequestParam ("image") MultipartFile file, Model model )
             
                                  throws IOException {
         SimpleDateFormat tanggal = new SimpleDateFormat("EEE-yyy-MM-dd");
@@ -31,10 +33,20 @@ public class Controlleridcard {
         String newTanggal = tanggal.format(date);
         
         String blob = Base64.encodeBase64String(file.getBytes());
+        String gambar = "data:iamge/jpeg;base64,".concat(blob);
         
-         return text+"<br><img width=200' src='data:image/jpeg;base64,"+
-               blob+" '/><br>"+
-               newTanggal;
+         model.addAttribute("Nm", text);
+         model.addAttribute("tgl", newTanggal);
+         model.addAttribute("gmbr",gambar);
+         
+        
+         
+         return "card";
+         
+         
+         
+         
+         
                         
     }
     
