@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -22,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Controlleridcard {
     
     @RequestMapping("/Projectidcard")
-    
+    @ResponseBody
     public String Projectidcard (@RequestParam ("Name") String text,
                                  @RequestParam ("Tanggal")@DateTimeFormat(pattern = "EEE-yyy-MM-dd")Date date,
                                  @RequestParam ("image") MultipartFile file, Model model )
