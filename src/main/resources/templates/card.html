@@ -9,8 +9,35 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            img{
+                box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2); 
+             max-width: 700px; 
+             margin: auto; 
+             text-align: justify; 
+             float: left;
+             display:block;
+             width:200px;
+             clear:both;
+             margin:5px;
+            }
+            fieldset{
+                 box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2); 
+                max-width: 500px; 
+                margin: auto; 
+                text-align: justify;
+            }
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>
+        <fieldset>
+             <h2 align="center">KTA IMM FT UMY  </h2>
+        <p th:text="${Nm}"/>
+        <p th:text="${tgl}"/>
+        <img th:src="${gmbr}" />
+        </fieldset>
+       
+        
+        
     </body>
 </html>
