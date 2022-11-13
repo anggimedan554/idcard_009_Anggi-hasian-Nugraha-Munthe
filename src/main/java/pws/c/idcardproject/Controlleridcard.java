@@ -28,8 +28,11 @@ public class Controlleridcard {
     @RequestMapping("/Projectidcard")
     
     public String Projectidcard (@RequestParam ("Name") String text,
+                                 @RequestParam ("NIM") String nomer,
                                  @RequestParam ("Tanggal")@DateTimeFormat(pattern = "yyyy-MM-dd")Date date,
-                                 @RequestParam ("image") MultipartFile file, Model model )
+                                 @RequestParam ("image") MultipartFile file, Model model,
+                                 @RequestParam ("jurusan") String jurusan)
+            
             
                                  throws IOException {
         SimpleDateFormat tanggal = new SimpleDateFormat("EEEE, yyyy-MM-dd");
@@ -42,6 +45,8 @@ public class Controlleridcard {
          model.addAttribute("Nm", text);
          model.addAttribute("tgl", newTanggal);
          model.addAttribute("gmbr",gambar);
+         model.addAttribute("nomer", nomer);
+         model.addAttribute("jrsn", jurusan);
          
         
          
